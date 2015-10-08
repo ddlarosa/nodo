@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  node_id: 1
+  mac: MyString
+  singal_db: 1
+  firsttime: 1
+  lasttime: 1
+
+two:
+  node_id: 1
+  mac: MyString
+  singal_db: 1
+  firsttime: 1
+  lasttime: 1

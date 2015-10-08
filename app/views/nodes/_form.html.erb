@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= f.label :mac %><br>
-    <%= f.text_field :mac %>
+    <%= f.text_field :mac, :class => 'form-control', :placeholder =>'Mac' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :class => 'form-control', :placeholder =>'Name' %>
   </div>
-  <div class="field">
+  <div class="form-group">
     <%= f.label :location %><br>
-    <%= f.text_field :location %>
+    <%= f.text_field :location, :class => 'form-control', :placeholder =>'Location' %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class => 'btn btn-default' %>
   </div>
 <% end %>

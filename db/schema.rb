@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151008094430) do
+ActiveRecord::Schema.define(version: 20151008135744) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "node_results", force: :cascade do |t|
+    t.integer  "node_id"
+    t.string   "mac"
+    t.integer  "singal_db"
+    t.integer  "firsttime"
+    t.integer  "lasttime"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "nodes", force: :cascade do |t|
     t.string   "mac"

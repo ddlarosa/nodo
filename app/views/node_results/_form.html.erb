@@ -1,0 +1,37 @@
+<%= form_for(@node_result) do |f| %>
+  <% if @node_result.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@node_result.errors.count, "error") %> prohibited this node_result from being saved:</h2>
+
+      <ul>
+      <% @node_result.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :node_id %><br>
+    <%= f.number_field :node_id %>
+  </div>
+  <div class="field">
+    <%= f.label :mac %><br>
+    <%= f.text_field :mac %>
+  </div>
+  <div class="field">
+    <%= f.label :singal_db %><br>
+    <%= f.number_field :singal_db %>
+  </div>
+  <div class="field">
+    <%= f.label :firsttime %><br>
+    <%= f.number_field :firsttime %>
+  </div>
+  <div class="field">
+    <%= f.label :lasttime %><br>
+    <%= f.number_field :lasttime %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

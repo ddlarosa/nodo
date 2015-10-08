@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Node:</strong>
+  <%= @node_result.node_id %>
+</p>
+
+<p>
+  <strong>Mac:</strong>
+  <%= @node_result.mac %>
+</p>
+
+<p>
+  <strong>Singal db:</strong>
+  <%= @node_result.singal_db %>
+</p>
+
+<p>
+  <strong>Firsttime:</strong>
+  <%= @node_result.firsttime %>
+</p>
+
+<p>
+  <strong>Lasttime:</strong>
+  <%= @node_result.lasttime %>
+</p>
+
+<%= link_to 'Edit', edit_node_result_path(@node_result) %> |
+<%= link_to 'Back', node_results_path %>

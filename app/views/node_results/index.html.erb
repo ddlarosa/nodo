@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Node Results</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Node</th>
+      <th>Mac</th>
+      <th>Singal db</th>
+      <th>Firsttime</th>
+      <th>Lasttime</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @node_results.each do |node_result| %>
+      <tr>
+        <td><%= node_result.node_id %></td>
+        <td><%= node_result.mac %></td>
+        <td><%= node_result.singal_db %></td>
+        <td><%= node_result.firsttime %></td>
+        <td><%= node_result.lasttime %></td>
+        <td><%= link_to 'Show', node_result %></td>
+        <td><%= link_to 'Edit', edit_node_result_path(node_result) %></td>
+        <td><%= link_to 'Destroy', node_result, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Node result', new_node_result_path %>
