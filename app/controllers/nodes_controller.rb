@@ -1,5 +1,5 @@
 class NodesController < ApplicationController
-  before_action :set_node, only: [:show, :edit, :update, :destroy]
+  before_action :set_node, only: [:show, :edit, :update, :destroy, :statistics]
 
   # GET /nodes
   # GET /nodes.json
@@ -19,6 +19,14 @@ class NodesController < ApplicationController
 
   # GET /nodes/1/edit
   def edit
+  end
+
+  # GET /nodes/1/statistics
+  def statistics 
+    @statistics_per_week={}
+    (-6..0).each do |i|
+      @statistics_per_week[Time.now.midnight+i.day]=NodeResult.where(node:@node.id,created_at: Time.now.midnight+i.day..(Time.now.midnight+(i+1).day)).distinct.count(:mac) 
+    end
   end
 
   # POST /nodes

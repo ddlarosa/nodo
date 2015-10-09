@@ -1,5 +1,6 @@
 require 'active_record'
 require '/home/nodo/nodepanel/app/models/node'
+require '/home/nodo/nodepanel/app/models/node_result'
 
 ActiveRecord::Base.establish_connection(
         :adapter  => "postgresql",
