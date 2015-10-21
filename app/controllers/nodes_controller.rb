@@ -1,5 +1,6 @@
 class NodesController < ApplicationController
-  before_action :set_node, only: [:show, :edit, :update, :destroy, :statistics]
+  before_action :set_node, only: [:show, :edit, :update, :destroy, :statistics, :statisticshour]
+  before_action :get_date, only: [:statisticshour] 
 
   # GET /nodes
   # GET /nodes.json
@@ -23,9 +24,21 @@ class NodesController < ApplicationController
 
   # GET /nodes/1/statistics
   def statistics 
-    @statistics_per_week={}
-    (-6..0).each do |i|
-      @statistics_per_week[Time.now.midnight+i.day]=NodeResult.where(node:@node.id,created_at: Time.now.midnight+i.day..(Time.now.midnight+(i+1).day)).distinct.count(:mac) 
+    @statistics_per_week=@node.get_statistics_per_week
+  end
+
+  def statisticshour
+    t = Time.now
+    t=t.change(:year   => @year)
+    t=t.change(:month  => @month)
+    t=t.change(:day    => @day)
+    t=t.change(:hour    => 0)
+    t=t.change(:minute    => 0)
+    t=t.change(:second   => 0)    
+
+    @statistics_per_hour={}
+      (0..23).each do |i|
+        @statistics_per_hour[t.midnight.hour+i]=NodeResult.where(node:@node.id,created_at: t.midnight+i.hour..t.midnight+(i+1).hour).distinct.count(:mac)
     end
   end
 
@@ -73,6 +86,13 @@ class NodesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_node
       @node = Node.find(params[:id])
+    end
+  
+    def get_date
+      date = params[:date]
+      @year=date[0..3].to_i
+      @month=date[4..5].to_i
+      @day=date[6..7].to_i
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

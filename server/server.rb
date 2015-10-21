@@ -11,7 +11,6 @@ require './db'
 
     def receive_data data
       send_data ">>> you sent: #{data}"
-      puts "#{data}"
       data_a=data.split('|')
       nodo=1
       mac=data_a[0]
